@@ -1,0 +1,25 @@
+{
+  "name": "lcd",
+  "version": "1.0.0",
+  "description": "",
+  "main": "generate_image.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Pramitheus06/ST7789-Graphics-driver-for-FPGAs.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Pramitheus06/ST7789-Graphics-driver-for-FPGAs/issues"
+  },
+  "homepage": "https://github.com/Pramitheus06/ST7789-Graphics-driver-for-FPGAs#readme",
+  "dependencies": {
+    "canvas": "^3.2.1",
+    "pngjs": "^7.0.0"
+  }
+}
