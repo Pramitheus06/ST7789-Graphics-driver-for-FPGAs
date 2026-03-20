@@ -1,7 +1,7 @@
 const { createCanvas, loadImage } = require("canvas");
 
-const WIDTH = 64;
-const HEIGHT = 32;
+const WIDTH = 240;
+const HEIGHT = 135;
 
 function rgb888to565(r, g, b) {
   return ((r & 0xF8) << 8) | ((g & 0xFC) << 3) | (b >> 3);

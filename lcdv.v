@@ -131,7 +131,13 @@ assign lcd_clk=~clk;
 assign lcd_cs=cs;
 assign lcd_data=spi_data[7];
 assign lcd_rs=dc;
-wire [15:0] pixel = screenBuffer[pix_cnt];
+
+reg [7:0] pix8;
+wire [15:0] pixel = {
+    pix8[7:5], pix8[7:5],     // R: expand 3 → 5 bits
+    pix8[4:2], pix8[4:2],     // G: expand 3 → 6 bits
+    pix8[1:0], pix8[1:0], pix8[1:0] // B: expand 2 → 5 bits
+};
 
 always @(posedge clk or negedge resetn ) begin
 	if(~resetn)  begin
@@ -150,6 +156,7 @@ always @(posedge clk or negedge resetn ) begin
 		pix_cnt<=0;
 		bit_cnt<=0;
 	end else begin
+		pix8 <= screenBuffer[pix_cnt];
 		case (state)
 			rst:
 			begin
@@ -274,8 +281,9 @@ always @(posedge clk or negedge resetn ) begin
 
 		
 	end
+(* ram_style = "block" *)
+reg [7:0] screenBuffer [0:32399];
 
-	reg [15:0] screenBuffer [2047:0];
 initial $readmemh("image.hex", screenBuffer);
 	
 
