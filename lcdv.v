@@ -134,9 +134,9 @@ assign lcd_rs=dc;
 
 reg [7:0] pix8;
 wire [15:0] pixel = {
-    pix8[7:5], pix8[7:5],     // R: expand 3 → 5 bits
-    pix8[4:2], pix8[4:2],     // G: expand 3 → 6 bits
-    pix8[1:0], pix8[1:0], pix8[1:0] // B: expand 2 → 5 bits
+    pix8[7:5], 2'b00,     // R: expand 3 → 5 bits
+    pix8[4:2], 3'b000,     // G: expand 3 → 6 bits
+    pix8[1:0], 3'b000 // B: expand 2 → 5 bits
 };
 
 always @(posedge clk or negedge resetn ) begin
